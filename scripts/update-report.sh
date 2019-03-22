@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -eo pipefail
 
 # NOTE: this script should be ran from the root of the repository; the CWD should reflect this
 BASEDIR=$(dirname "$0")
@@ -23,6 +23,3 @@ mkdir -p ${REPORT_DIR}
 az storage blob download-batch -d report -s '$web'
 
 ${BASEDIR}/generate-report.sh -o ${REPORT_DIR} -v ${VERSION} -c ${COMMIT_SHA}
-
-# push appended report back to blob - CLI will correctly take care of MIME types
-az storage blob upload-batch -d '$web' -s report
