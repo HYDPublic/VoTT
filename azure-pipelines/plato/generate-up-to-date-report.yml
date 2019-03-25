@@ -46,8 +46,6 @@ steps:
   inputs:
     targetType: filePath
     filePath: './scripts/update-report.sh'
-    variables:
-
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: report'
