@@ -48,6 +48,13 @@ steps:
     targetType: filePath
     filePath: './scripts/update-report.sh'
 
+- bash: |
+    set -e
+
+    cat /tmp/download.log
+  displayName: "print download log"
+
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: report'
   inputs:
