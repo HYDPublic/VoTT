@@ -52,8 +52,8 @@ steps:
   displayName: "Pull down old report and add updates"
   inputs:
     azureSubscription: 'PELITTLE TEAM - CSE DWR (d36d0808-a967-4f73-9fdc-32ea232fc81d)'
-    targetType: filePath
-    filePath: './scripts/update-report.sh'
+    scriptLocation: inlineScript
+    inlineScript: './scripts/update-report.sh'
 
 - bash: |
     set -e
