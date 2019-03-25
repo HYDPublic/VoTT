@@ -41,6 +41,12 @@ steps:
   inputs:
     versionSpec: 10.x
 
+- bash: |
+    set -e
+
+    python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); print(flags&os.O_NONBLOCK);'
+  displayName: check if O_NONBLOCK is set
+
 - task: AzureCLI@1
   displayName: "Pull down old report and add updates"
   inputs:
@@ -53,7 +59,7 @@ steps:
 
     cat /tmp/download.log
   displayName: "print download log"
-
+  condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: report'
